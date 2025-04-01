@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="RecordBy" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+        <Label Grid.Row="0" Content="Select Process:"/>
+        <ComboBox Grid.Row="1" Name="ProcessComboBox" Width="200" HorizontalAlignment="Left" Margin="0,5,0,15" SelectionChanged="ProcessComboBox_SelectionChanged"/>
+
+        <Label Grid.Row="2" Content="Buffer Length (minutes):"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,5,0,15">
+            <Slider Grid.Row="3" Name="BufferSlider" Minimum="1" Maximum="20" Value="5" Width="200" HorizontalAlignment="Left" TickFrequency="1"  IsSnapToTickEnabled="True" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Value, ElementName=BufferSlider, StringFormat={}{0} min}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Label Grid.Row="4" Name="StatusLabel" Content="Status: Idle" Margin="0,10,0,0"/>
+        <Label Grid.Row="5" Name="BufferInfoLabel" Content="Buffer: 0 MB" Margin="0,5,0,0"/>
     </Grid>
 </Window>
